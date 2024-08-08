@@ -3,6 +3,6 @@ Resources:
     Type: AWS::EC2::Instance
     Properties:
       InstanceType: "t2.micro"
-      AvailabilityZone: "us-east-2a"
-      KeyName: "Sameer"
-      ImageId: "ami-05fb0b8c1424f266b"
+      AvailabilityZone: "us-east-1a"
+      KeyName: "riteshawskp"
+      ImageId: "ami-04a81a99f5ec58529"
