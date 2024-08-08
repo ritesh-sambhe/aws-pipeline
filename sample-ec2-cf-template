@@ -1,61 +1,8 @@
-AWSTemplateFormatVersion: '2010-09-09'
-Description: CloudFormation template to create an EC2 instance in us-east-1a using the default VPC, subnet, and security group.
-
-Parameters:
-  InstanceType:
-    Description: EC2 instance type
-    Type: String
-    Default: t2.small
-    AllowedValues:
-      - t2.micro
-      - t2.small
-      - t2.medium
-    ConstraintDescription: must be a valid EC2 instance type.
-
-  KeyName:
-    Description: Name of an existing EC2 KeyPair to enable SSH access to the instance
-    Type: AWS::EC2::KeyPair::KeyName
-    ConstraintDescription: must be the name of an existing EC2 KeyPair.
-
 Resources:
-  EC2Instance:
+  testec2instance:
     Type: AWS::EC2::Instance
     Properties:
-      InstanceType: !Ref InstanceType
-      KeyName: !Ref riteshawskp
-      ImageId: ami-04a81a99f5ec58529 # Amazon Linux 2 AMI for us-east-1
-      NetworkInterfaces:
-        - AssociatePublicIpAddress: true
-          DeviceIndex: 0
-          SubnetId: 
-            Fn::Select: 
-              - 0
-              - Fn::GetAZs: 
-                  Ref: "AWS::Region"
-          GroupSet:
-            - !Ref DefaultSecurityGroup
-
-  DefaultSecurityGroup:
-    Type: AWS::EC2::SecurityGroup
-    Properties:
-      GroupName: DefaultSecurityGroup
-      GroupDescription: Allow SSH and HTTP
-      VpcId: !Ref DefaultVPC
-      SecurityGroupIngress:
-        - IpProtocol: tcp
-          FromPort: 22
-          ToPort: 22
-          CidrIp: 0.0.0.0/0
-        - IpProtocol: tcp
-          FromPort: 80
-          ToPort: 80
-          CidrIp: 0.0.0.0/0
-
-  DefaultVPC:
-    Type: AWS::EC2::VPC
-    Properties: {}
-    Condition: AlwaysTrue
-
-Conditions:
-  AlwaysTrue: !Equals [1, 1]
-
+      InstanceType: "t2.micro"
+      AvailabilityZone: "us-east-1a"
+      KeyName: "riteshawskp"
+      ImageId: "ami-04a81a99f5ec58529"
