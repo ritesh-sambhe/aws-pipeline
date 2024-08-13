@@ -2,7 +2,7 @@ Resources:
   testec2instance:
     Type: AWS::EC2::Instance
     Properties:
-      InstanceType: "t2.micro"
+      InstanceType: "t2.small"
       AvailabilityZone: "us-east-1a"
       KeyName: "riteshawskp"
       ImageId: "ami-04a81a99f5ec58529"
