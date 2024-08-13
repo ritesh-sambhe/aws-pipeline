@@ -5,4 +5,4 @@ Resources:
       InstanceType: "t2.small"
       AvailabilityZone: "us-east-2a"
       KeyName: "riteshawskp"
-      ImageId: "ami-0862be96e41dcbf74"
+      ImageId: "ami-05c3dc660cb6907f0"
